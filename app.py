@@ -50,9 +50,9 @@ def get_langfuse_client():
     try:
         from langfuse import Langfuse
         client = Langfuse(
-            public_key=os.environ('LANGFUSE_PUBLIC_KEY'),
-            secret_key=os.environ('LANGFUSE_SECRET_KEY'),
-            host=os.environ('LANGFUSE_HOST', 'https://cloud.langfuse.com')
+            public_key=os.getenv('LANGFUSE_PUBLIC_KEY'),
+            secret_key=os.getenv('LANGFUSE_SECRET_KEY'),
+            host=os.getenv('LANGFUSE_HOST', 'https://cloud.langfuse.com')
         )
         # Test connection
         client.auth_check()
@@ -131,13 +131,13 @@ def extract_features_with_regex(text):
 
 # Inicjalizacja Langfuse (raz globalnie)
 langfuse = Langfuse(
-    public_key=os.environ('LANGFUSE_PUBLIC_KEY'),
-    secret_key=os.environ('LANGFUSE_SECRET_KEY'),
-    host=os.environ('LANGFUSE_HOST', 'https://cloud.langfuse.com')
+    public_key=os.getenv('LANGFUSE_PUBLIC_KEY'),
+    secret_key=os.getenv('LANGFUSE_SECRET_KEY'),
+    host=os.getenv('LANGFUSE_HOST', 'https://cloud.langfuse.com')
 )
 langfuse.auth_check()
 
-llm_client = OpenAI(api_key=os.environ("OPENAI_API_KEY"))
+llm_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def extract_features_from_text(text, openai_api_key):
     # Prompt do OpenAI
@@ -254,7 +254,7 @@ def main():
         st.write("• Anna, 25 lat, kobieta, tempo 5:45")
     
     # Sprawdź klucze API
-    openai_api_key = os.environ('OPENAI_API_KEY')
+    openai_api_key = os.getenv('OPENAI_API_KEY')
     
     if not openai_api_key:
         st.error("❌ Brak OPENAI_API_KEY w zmiennych środowiskowych")
