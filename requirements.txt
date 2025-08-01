@@ -3,3 +3,9 @@ openai
 langfuse==2.51.4
 scikit-learn
 pandas 
+boto3
+joblib
+dotenv
+re
+uuid
+json
