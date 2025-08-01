@@ -1,5 +1,5 @@
 streamlit
 openai
-langfuse=2.51.4
+langfuse==2.51.4
 scikit-learn
 pandas 
